@@ -12,7 +12,7 @@ const router = express.Router()
 /** ---------------------------------------------------------------------------
  *
  * @route   GET api/auth
- * @desc    Test Route
+ * @desc    Get a user data
  * @access  Public
  */
 router.get('/', auth, async (req, res) => {
