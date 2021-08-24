@@ -2,9 +2,11 @@ import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getCurrentProfile } from '../../actions/profile'
 
+import { getCurrentProfile } from '../../actions/profile'
 import DashboardActions from './DashboardActions'
+import Experience from './Experience'
+import Education from './Education'
 import Spinner from '../layout/Spinner'
 
 /* -------------------------------------------------------------------------- */
@@ -16,7 +18,7 @@ const Dashboard = ({
 }) => {
     useEffect(() => {
         getCurrentProfile()
-    }, [])
+    }, [getCurrentProfile])
 
     // Show profile is exists else make them complete their profile
     return loading && profile === null ? (
@@ -31,6 +33,8 @@ const Dashboard = ({
             {profile !== null ? (
                 <Fragment>
                     <DashboardActions />
+                    <Experience experience={profile.experience} />
+                    <Education education={profile.education} />
                 </Fragment>
             ) : (
                 <Fragment>
