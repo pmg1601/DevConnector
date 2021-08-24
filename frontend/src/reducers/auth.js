@@ -2,7 +2,9 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
     USER_LOADED,
-    AUTH_ERROR
+    AUTH_ERROR,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL
 } from '../actions/type'
 
 /* -------------------------------------------------------------------------- */
@@ -29,8 +31,10 @@ export default function auth(state = initialState, action) {
                 user: payload
             }
 
-        // When registration is successful
+        // 1. When registration is successful
+        // 2. When Log in is successful
         case REGISTER_SUCCESS:
+        case LOGIN_SUCCESS:
             localStorage.setItem('token', payload.token)
             return {
                 ...state,
@@ -39,9 +43,11 @@ export default function auth(state = initialState, action) {
                 loading: false
             }
 
-        // When resistration fails
-        // There is error while authorization
+        // 1. When resistration fails
+        // 2. Log in fails
+        // 3. There is error while authorization
         case REGISTER_FAIL:
+        case LOGIN_FAIL:
         case AUTH_ERROR:
             localStorage.removeItem('token')
             return {
