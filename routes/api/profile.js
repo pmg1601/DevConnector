@@ -6,6 +6,7 @@ import config from 'config'
 import auth from '../../middleware/auth.js'
 import Profile from '../../models/Profile.js'
 import User from '../../models/User.js'
+import Post from '../../models/Post.js'
 /* -------------------------------------------------------------------------- */
 
 const router = express.Router()
@@ -186,6 +187,7 @@ router.get('/user/:user_id', async (req, res) => {
 router.delete('/', auth, async (req, res) => {
     try {
         // Remove user's posts
+        await Post.deleteMany({ user: req.user.id })
 
         // Remove Profile
         await Profile.findOneAndRemove({ user: req.user.id })

@@ -90,6 +90,7 @@ export const login = (email, password) => async (dispatch) => {
         })
 
         dispatch(loadUser())
+        dispatch(setAlert('Logged In Successfully!', 'success'))
     } catch (err) {
         const errs = err.response.data.errors
 

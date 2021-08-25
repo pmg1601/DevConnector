@@ -5,7 +5,8 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    DELETE_ACCOUNT
 } from '../actions/type'
 
 /* -------------------------------------------------------------------------- */
@@ -48,10 +49,12 @@ export default function auth(state = initialState, action) {
         // 2. Log in fails
         // 3. Logout user
         // 4. There is error while authorization
+        // 5. Delete account
         case REGISTER_FAIL:
         case LOGIN_FAIL:
         case LOGOUT:
         case AUTH_ERROR:
+        case DELETE_ACCOUNT:
             localStorage.removeItem('token')
             return {
                 ...state,
