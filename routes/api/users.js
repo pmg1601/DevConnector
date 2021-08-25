@@ -53,11 +53,12 @@ router.post(
             }
 
             /* --------------------------- Get users gravatar --------------------------- */
-            const avatar = gravatar.url(email, {
-                s: '200',
-                r: 'pg',
-                d: 'mm'
-            })
+            // const avatar = gravatar.url(email, {
+            //     s: '200',
+            //     r: 'pg',
+            //     d: 'mm'
+            // })
+            const avatar = `https://avatars.dicebear.com/api/male/${name}.svg?background=%230000ff`
 
             user = new User({
                 name,

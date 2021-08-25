@@ -57,6 +57,7 @@ export const register =
             })
 
             dispatch(loadUser())
+            dispatch(setAlert('Registered Successfully!', 'success'))
         } catch (err) {
             const errs = err.response.data.errors
 
@@ -110,4 +111,5 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
     dispatch({ type: CLEAR_PROFILE })
     dispatch({ type: LOGOUT })
+    dispatch(setAlert('Logged Out Successfully!', 'success'))
 }
