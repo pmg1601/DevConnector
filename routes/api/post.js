@@ -36,7 +36,7 @@ router.post(
             await newPost.save()
 
             console.log('- Post Created!'.green)
-            res.json(post)
+            res.json(newPost)
         } catch (err) {
             console.log(err.message)
             return res.status(500).send('Server Error')
