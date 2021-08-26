@@ -8,7 +8,7 @@ import { register } from '../../actions/auth'
 
 /* -------------------------------------------------------------------------- */
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({ setAlert, register, auth: { isAuthenticated, user } }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -101,11 +101,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 Register.propTypes = {
     setAlert: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool
+    // isAuthenticated: PropTypes.bool,
+    // user: PropTypes.string.isRequired
+    auth: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated
+    // isAuthenticated: state.auth.isAuthenticated,
+    // user: state.auth.isAuthenticated._id
+    auth: state.auth
 })
 
 export default connect(mapStateToProps, { setAlert, register })(Register)

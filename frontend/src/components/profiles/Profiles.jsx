@@ -34,6 +34,8 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                                     profile={profile}
                                 />
                             ))
+                        ) : loading ? (
+                            <Spinner />
                         ) : (
                             <h4>No Profiles Found!</h4>
                         )}

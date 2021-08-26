@@ -58,7 +58,7 @@ router.post(
             //     r: 'pg',
             //     d: 'mm'
             // })
-            const avatar = `https://avatars.dicebear.com/api/male/${name}.svg?background=%230000ff`
+            const avatar = `https://avatars.dicebear.com/api/avataaars/${name}.svg?background=%230000ff`
 
             user = new User({
                 name,

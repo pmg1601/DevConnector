@@ -69,7 +69,7 @@ export default function post(state = intialState, action) {
         case ADD_COMMENT:
             return {
                 ...state,
-                post: { commnets: payload, ...state.post },
+                post: { ...state.post, comments: payload },
                 loading: false
             }
 
