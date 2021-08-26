@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://pratik:pratik123@devconnector.kbkgr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwt_secret": "secret_things",
+    "githubClientID": "815b2a6230acb927616e",
+    "githubSecret": "77722f4c728f989430deac47298897164a122b4c"
+}

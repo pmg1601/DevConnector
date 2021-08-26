@@ -1,6 +1,8 @@
 import express from 'express'
 import colors from 'colors'
 import connectDB from './config/db.js'
+import path from 'path'
+
 import userRoutes from './routes/api/users.js'
 import authRoutes from './routes/api/auth.js'
 import profileRoutes from './routes/api/profile.js'
@@ -18,12 +20,19 @@ connectDB()
 app.use(express.json({ extended: false }))
 
 // Define Routes
-app.get('/', (req, res) => res.send('API Running!'))
-
 app.use('/api/users', userRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/profile', profileRoutes)
 app.use('/api/post', postRoutes)
+
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+    // set static folder
+    app.use(express.static('fronend/build'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+    })
+}
 
 /* -------------------------------------------------------------------------- */
 
